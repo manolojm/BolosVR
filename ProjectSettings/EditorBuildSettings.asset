@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PruebaMandos.unity
     guid: e68dae6fce94d224c95593208ac30139
+  - enabled: 1
+    path: Assets/Sci-Fi Styled Modular Pack/Example scenes/outpost on desert.unity
+    guid: b42ca4c5c936383429d2318c931f7ad2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7e1c4930579a9c144b3f25cc788df740, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: aa5f28a7feeab534281166d517667eac, type: 2}
