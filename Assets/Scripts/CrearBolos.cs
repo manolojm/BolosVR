@@ -20,6 +20,7 @@ public class CrearBolos : MonoBehaviour
     public int puntos;
     public Boolean ronda1;
     public GameObject mensajePuntos;
+    public GameObject mensajeInstrucciones;
 
     private void Awake() {
         instance = this;
@@ -48,9 +49,11 @@ public class CrearBolos : MonoBehaviour
         
         if (ronda1) {
             Debug.Log("Ronda1");
+            mensajeInstrucciones.GetComponent<TextMeshPro>().text = "Segundo lanzamiento";
             DestruirBolosCaidos();
         } else {
             Debug.Log("Ronda2");
+            mensajeInstrucciones.GetComponent<TextMeshPro>().text = "Primer lanzamiento";
             DestruirBolosTodos();
             Invoke("CrearBolosNuevos", 2f);
         }
@@ -87,7 +90,7 @@ public class CrearBolos : MonoBehaviour
             fallen++;
             Destroy(bolo);
         }
-        puntos += fallen;
+        puntos += 0;
         ronda1 = true;
 
     }
