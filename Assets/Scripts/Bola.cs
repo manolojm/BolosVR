@@ -28,11 +28,11 @@ public class Bola : MonoBehaviour
             rb.velocity *= 0;
             transform.position = punto.transform.position; ;
 
-            Invoke("LlamarPonerbolos", 3f);
+            Invoke("LlamarPonerbolos", 2f);
         }
     }
 
     private void LlamarPonerbolos() {
-        CrearBolos.instance.PonerBolos();
+        CrearBolos.instance.DestruirBolosCaidos();
     }
 }

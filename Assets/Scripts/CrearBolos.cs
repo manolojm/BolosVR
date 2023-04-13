@@ -19,8 +19,11 @@ public class CrearBolos : MonoBehaviour
     public int fallen;
     public int puntos;
     public Boolean ronda1;
+
     public GameObject mensajePuntos;
     public GameObject mensajeInstrucciones;
+    public AudioSource audioPleno;
+    public AudioSource audioFondo;
 
     private void Awake() {
         instance = this;
@@ -33,6 +36,8 @@ public class CrearBolos : MonoBehaviour
         puntos = 0;
         threshold = 0.9f;
         ronda1 = true;
+
+        Instantiate(audioFondo);
     }
 
     // Update is called once per frame
@@ -46,11 +51,12 @@ public class CrearBolos : MonoBehaviour
     }
 
     public void PonerBolos() {
-        
+        Debug.Log("Poner bolos");
+
         if (ronda1) {
             Debug.Log("Ronda1");
             mensajeInstrucciones.GetComponent<TextMeshPro>().text = "Segundo lanzamiento";
-            DestruirBolosCaidos();
+            //DestruirBolosCaidos();
         } else {
             Debug.Log("Ronda2");
             mensajeInstrucciones.GetComponent<TextMeshPro>().text = "Primer lanzamiento";
@@ -63,6 +69,7 @@ public class CrearBolos : MonoBehaviour
 
     // Destruir solo los bolos caidos
     public void DestruirBolosCaidos() {
+        Debug.Log("Destruir bolos caidos");
         fallen = 0;
         bolosOld = GameObject.FindGameObjectsWithTag("Bolo");
         foreach (GameObject bolo in bolosOld) {
@@ -76,14 +83,19 @@ public class CrearBolos : MonoBehaviour
 
         // Si hace pleno, se salta la ronda 2
         if (fallen == 10) {
-            ronda1 = true;
-        } else {
             ronda1 = false;
-        } 
+            Instantiate(audioPleno);
+            Debug.Log(ronda1);
+        } else {
+            ronda1 = true;
+        }
+
+        Invoke("PonerBolos", 2f);
     }
 
     // Destruir todos los bolos
     public void DestruirBolosTodos() {
+        Debug.Log("Destruir todos los bolos");
         fallen = 0;
         bolosOld = GameObject.FindGameObjectsWithTag("Bolo");
         foreach (GameObject bolo in bolosOld) {
@@ -97,6 +109,7 @@ public class CrearBolos : MonoBehaviour
 
     // Crear nuevos bolos
     public void CrearBolosNuevos() {
+        Debug.Log("Crear todos los bolos");
         bolos = GameObject.FindGameObjectsWithTag("BoloSpawn");
         foreach (GameObject bolo in bolos) {
             GameObject nuevoBolo = Instantiate(boloPrefab, bolo.transform.position, bolo.transform.rotation);
