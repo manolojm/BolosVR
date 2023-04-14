@@ -60,7 +60,7 @@ public class CrearBolos : MonoBehaviour
         } else {
             Debug.Log("Ronda2");
             mensajeInstrucciones.GetComponent<TextMeshPro>().text = "Primer lanzamiento";
-            DestruirBolosTodos();
+            Invoke("DestruirBolosTodos", 1f);
             Invoke("CrearBolosNuevos", 2f);
         }
 
@@ -81,13 +81,19 @@ public class CrearBolos : MonoBehaviour
         }
         puntos += fallen;
 
+        // Para probar: Vector3(7.21351814,-2.9364419,31.1258316)
         // Si hace pleno, se salta la ronda 2
         if (fallen == 10) {
             ronda1 = false;
             Instantiate(audioPleno);
-            Debug.Log(ronda1);
+
         } else {
-            ronda1 = true;
+            if (ronda1) {
+                ronda1 = false;
+                
+            } else {
+                ronda1 = true; 
+            }  
         }
 
         Invoke("PonerBolos", 2f);
@@ -102,9 +108,6 @@ public class CrearBolos : MonoBehaviour
             fallen++;
             Destroy(bolo);
         }
-        puntos += 0;
-        ronda1 = true;
-
     }
 
     // Crear nuevos bolos

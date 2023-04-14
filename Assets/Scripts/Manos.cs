@@ -7,33 +7,25 @@ using UnityEngine.UI;
 public class Manos : MonoBehaviour {
     private List<UnityEngine.XR.InputDevice> gameControllers;
     Animator animator;
-    int click = 0;
 
     // Start is called before the first frame update
     void Start() {
         animator = GetComponent<Animator>();
         gameControllers = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(UnityEngine.XR.InputDeviceCharacteristics.Left, gameControllers);
-
-        /*foreach (var device in gameControllers) {
-            Debug.Log(string.Format("Device name '{0}' has char '{1}'", device.name, device.characteristics.ToString()));
-        }*/
+        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(UnityEngine.XR.InputDeviceCharacteristics.Right, gameControllers);
     }
 
     // Update is called once per frame
     void Update() {
-        bool cierraMano;
+        bool cierraMano = false;
         if (gameControllers.Count > 0) {
 
             if (gameControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out cierraMano)) {
                 // Apertura
-                click++;
-                //animator.SetBool("coger", true);
-                animator.Play("ManoD");
+                animator.SetBool("coger", cierraMano);
             } else {
                 // Cierre
-                //animator.SetBool("coger", false);
-                animator.Play("ManoDcierre");
+                animator.SetBool("coger", cierraMano);
             }
         }
     }
