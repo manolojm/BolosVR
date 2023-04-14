@@ -14,6 +14,8 @@ public class PruebaMandos : MonoBehaviour
     private List<UnityEngine.XR.InputDevice> dispositivosDetectados;
     public TMPro.TextMeshPro textoJuego;
     public GameObject mensajePuntos;
+    public GameObject mensajePc;
+    public GameObject mensajeTablet;
 
     // Bool
     private bool primaryTouch;
@@ -109,15 +111,15 @@ public class PruebaMandos : MonoBehaviour
     }
 
     public void MuestraprimaryTouch() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.primaryTouch;
+        mensajeTablet.GetComponent<TextMeshPro>().text = "Primary Touch: " + this.primaryTouch;
     }
     
     public void MuestrasecondaryTouch() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.secondaryTouch;
+        mensajeTablet.GetComponent<TextMeshPro>().text = "Seoncary Touch: " + this.secondaryTouch;
     }
     
     public void Muestratrigger() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.trigger;
+        mensajeTablet.GetComponent<TextMeshPro>().text = "Trigger: " + this.trigger;
     }
     
     public void Muestragrip() {
