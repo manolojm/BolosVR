@@ -13,9 +13,15 @@ public class PruebaMandos : MonoBehaviour
     private List<UnityEngine.XR.InputDevice> gameControllers;
     private List<UnityEngine.XR.InputDevice> dispositivosDetectados;
     public TMPro.TextMeshPro textoJuego;
+
+
     public GameObject mensajePuntos;
-    public GameObject mensajePc;
+    public GameObject mensajePc1;
+    public GameObject mensajePc2;
     public GameObject mensajeTablet;
+    public GameObject mensajeMonitor1;
+    public GameObject mensajeMonitor2;
+    public GameObject mensajeMonitor3;
 
     // Bool
     private bool primaryTouch;
@@ -103,11 +109,11 @@ public class PruebaMandos : MonoBehaviour
     }
 
     public void MuestraprimaryButton() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.primaryButton;
+        mensajeMonitor1.GetComponent<TextMeshPro>().text = "Primary Button: " + this.primaryButton;
     }
     
     public void MuestrasecondaryButton() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Secondary Button: " + this.secondaryButton;
+        mensajeMonitor2.GetComponent<TextMeshPro>().text = "Secondary Button: " + this.secondaryButton;
     }
 
     public void MuestraprimaryTouch() {
@@ -123,7 +129,7 @@ public class PruebaMandos : MonoBehaviour
     }
     
     public void Muestragrip() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.grip;
+        mensajeMonitor3.GetComponent<TextMeshPro>().text = "Grip: " + this.grip;
     }
     
     public void MuestratriggerButton() {
@@ -159,15 +165,15 @@ public class PruebaMandos : MonoBehaviour
     }
 
     public void MuestradevicePosition() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.devicePosition;
+        mensajePc1.GetComponent<TextMeshPro>().text = "Device position: " + this.devicePosition;
     }
 
     public void MuestradeviceRotation() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.deviceRotation;
+        mensajePc1.GetComponent<TextMeshPro>().text = "Device rotation: " + this.deviceRotation;
     }
 
     public void MuestradeviceVelocity() {
-        mensajePuntos.GetComponent<TextMeshPro>().text = "Primary Button: " + this.deviceVelocity;
+        mensajePc1.GetComponent<TextMeshPro>().text = "Device velocity: " + this.deviceVelocity;
     }
 
     public void MuestradeviceAngularVelocity() {
@@ -201,7 +207,7 @@ public class PruebaMandos : MonoBehaviour
             }
         }
 
-        mensajePuntos.GetComponent<TextMeshPro>().text = text;
+        mensajePc2.GetComponent<TextMeshPro>().text = text;
     }
 
     // Update is called once per frame
